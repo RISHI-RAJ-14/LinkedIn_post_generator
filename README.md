@@ -21,7 +21,7 @@ Mohan, a LinkedIn influencer, wants to maintain his posting consistency but need
 - Customize post length, language, and focus areas
 
 ## System Architecture
-![App Architecture](https://resources/architecture.jpg)
+![App Architecture](resources/architecture.jpg)
 
 The application operates in two main stages:
 
