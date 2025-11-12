@@ -25,6 +25,9 @@ def process_posts(raw_file_path, processed_file_path=None):
 
 
 def extract_metadata(post):
+    # Clean the post text to remove problematic Unicode characters
+    cleaned_post = clean_text(post)
+    
     template = '''
     You are given a LinkedIn post. You need to extract number of lines, language of the post and tags.
     1. Return a valid JSON. No preamble. 
@@ -38,7 +41,7 @@ def extract_metadata(post):
 
     pt = PromptTemplate.from_template(template)
     chain = pt | llm
-    response = chain.invoke(input={"post": post})
+    response = chain.invoke(input={"post": cleaned_post})
 
     try:
         json_parser = JsonOutputParser()
@@ -47,6 +50,19 @@ def extract_metadata(post):
         raise OutputParserException("Context too big. Unable to parse jobs.")
     return res
 
+def clean_text(text):
+    """Remove problematic Unicode characters"""
+    if isinstance(text, str):
+        # Method 1: Remove surrogate pairs
+        text = text.encode('utf-8', 'ignore').decode('utf-8')
+        
+        # Method 2: Remove specific problematic characters
+        # text = ''.join(char for char in text if not ('\ud800' <= char <= '\udfff'))
+        
+        # Method 3: Replace emojis (optional)
+        # import re
+        # text = re.sub(r'[^\x00-\x7F]+', '', text)  # Remove non-ASCII
+    return text
 
 def get_unified_tags(posts_with_metadata):
     unique_tags = set()
