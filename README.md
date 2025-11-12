@@ -2,7 +2,10 @@
 
 A generative AI application that analyzes LinkedIn influencers' posting patterns and creates new content matching their unique writing style.
 
-https://resources/tool.jpg
+## 🚀 Live Demo
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://linkedinpostgenerator-9pvdmrsbgx3djwffncaybr.streamlit.app/)
+
 
 # Overview
 This tool helps content creators and LinkedIn influencers maintain consistent engagement by generating new posts that align with their established voice and style. By analyzing historical content, the AI learns writing patterns and produces relevant, style-matched posts for future publication.
@@ -18,7 +21,7 @@ Mohan, a LinkedIn influencer, wants to maintain his posting consistency but need
 - Customize post length, language, and focus areas
 
 ## System Architecture
-https://resources/architecture.jpg
+![App Architecture](https://resources/architecture.jpg)
 
 The application operates in two main stages:
 
